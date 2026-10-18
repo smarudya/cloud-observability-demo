@@ -1,0 +1,6 @@
+// Controlled failures and exceptions for incident triage
+union isfuzzy=true requests, exceptions, traces
+| where timestamp > ago(24h)
+| where success == false or severityLevel >= 3 or message has "Controlled failure"
+| project timestamp, itemType, operation_Id, name, resultCode, message, severityLevel
+| order by timestamp desc

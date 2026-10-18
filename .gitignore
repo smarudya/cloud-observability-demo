@@ -1,0 +1,12 @@
+.vs/
+.serena/
+.vscode/
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+*.usersecrets
+appsettings.Local.json
+*.log
+artifacts/

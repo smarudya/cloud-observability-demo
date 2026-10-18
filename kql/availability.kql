@@ -1,0 +1,10 @@
+// Availability-test outcomes, when Availability Tests target /health or /ready
+availabilityResults
+| where timestamp > ago(7d)
+| summarize
+    Checks = count(),
+    FailedChecks = countif(success == false),
+    AvailabilityPercent = round(100.0 * countif(success == true) / count(), 2),
+    P95DurationMs = percentile(duration, 95)
+  by name, location, bin(timestamp, 1h)
+| order by timestamp desc

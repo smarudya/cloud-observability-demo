@@ -1,0 +1,9 @@
+// Outbound dependency health and latency
+dependencies
+| where timestamp > ago(24h)
+| summarize
+    Calls = count(),
+    Failures = countif(success == false),
+    P95DurationMs = percentile(duration, 95)
+  by target, type, name, bin(timestamp, 15m)
+| order by timestamp desc

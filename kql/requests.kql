@@ -1,0 +1,11 @@
+// Request volume, latency, and failed-request rate (last 24 hours)
+requests
+| where timestamp > ago(24h)
+| summarize
+    Requests = count(),
+    FailedRequests = countif(success == false),
+    FailureRate = round(100.0 * countif(success == false) / count(), 2),
+    P50DurationMs = percentile(duration, 50),
+    P95DurationMs = percentile(duration, 95)
+  by bin(timestamp, 5m), name
+| order by timestamp asc

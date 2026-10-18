@@ -43,14 +43,6 @@ $env:OTEL_EXPORTER_OTLP_ENDPOINT = "http://localhost:4317"
 4. Use `kql/requests.kql` and `kql/failures.kql` to identify the error-rate increase and correlated operations.
 5. Follow `docs/INCIDENT_RUNBOOK.md`; use `docs/APP_INSIGHTS_WORKBOOK.md` to create the supporting workbook.
 
-## Deloitte Job 48802 monitoring mapping
-
-- **Cloud-native observability:** OpenTelemetry resource metadata, tracing, metrics, and optional Application Insights.
-- **Operational readiness:** `/health` and `/ready` endpoints, availability query, and CI build/test.
-- **Incident response:** SEV2 detect → triage → mitigate → postmortem runbook.
-- **Data-driven troubleshooting:** KQL samples for requests, failures, dependencies, and availability.
-- **Engineering quality:** .NET 8, JSON structured logs, Docker image, unit tests, and GitHub Actions.
-
 ## Lab limits
 
 This is a synthetic API, not a production platform. It has no authentication, persistence, distributed deployment, alert routing, SLO enforcement, or live Azure resources. The controlled failure endpoint is deliberately exposed only for a safe demo environment; protect or remove it in any real deployment.
